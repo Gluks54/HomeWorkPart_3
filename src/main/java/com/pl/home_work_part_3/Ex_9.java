@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Ex_10 {
+public class Ex_9 {
     public static void main(String[] args) throws IOException {
         Path path = Paths.get("C:\\Users\\AguRok\\Downloads\\cwiczenia_fuel.csv");
         List<String> lines = Files.readAllLines(path);
-        // System.out.println(carEx1);
+
         List<String> models = lines.subList(1, lines.size());
 
         List<Car_Ex2> lables = models
@@ -31,9 +31,6 @@ public class Ex_10 {
 
                 .collect(Collectors.toList());
 
-//        System.out.println(lables);
-//        System.out.println(lables.size());
-
         Map<String, List<Car_Ex2>> groupedByDivision2 = lables
                 .stream()
                 .collect(Collectors.groupingBy(x -> x.division));
@@ -42,11 +39,7 @@ public class Ex_10 {
         groupedByDivision2
                 .keySet()
                 .stream()
-                .filter(x-> groupedByDivision2.get(x).size() >= 50)
-                .map(x->
-                    String.format("%s -- %d",x,groupedByDivision2.get(x).size()))
+                .map(x -> String.format("%s -- (%d)  ", x, groupedByDivision2.get(x).size()))
                 .forEach(System.out::println);
     }
 }
-//10. wypisz producentów dla których istnieje conajmniej 50 modeli/ 20 modeli
-//    tip: wszyskiego składowe już znasz ;)

@@ -5,25 +5,26 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Ex_6 {
+public class Ex_5 {
     public static void main(String[] args) throws IOException {
         Path path = Paths.get("C:\\Users\\AguRok\\Downloads\\cwiczenia_fuel.csv");
         List<String> lines = Files.readAllLines(path);
-        // System.out.println(carEx1);
+
         List<String> models = lines.subList(1, lines.size());
 
-        boolean allPorshe = models
+        List<Car_Ex2> carEx2 = models
                 .stream()
-                .map(x ->{
-                    String [] split = x.split(",");
+                .map(x -> {
+                    String[] split = x.split(",");
                     Car_Ex2 listCarEx1 = new Car_Ex2();
+                    listCarEx1.Comb_Fe = Integer.parseInt(split[7]);
                     listCarEx1.division = split[1];
-                    return listCarEx1; })
-                .allMatch(x->x.division.startsWith("Porshe"));
-        System.out.println(allPorshe);
+                    return listCarEx1;
+                })
+                .filter(x -> x.division.startsWith("BMW") && x.Comb_Fe < 20)
+                .sorted((x, y) -> (int) (x.Comb_Fe - y.Comb_Fe))
+                .collect(Collectors.toList());
 
+        System.out.println(carEx2);
     }
-
 }
-//6. sprawdź czy wszystkie modele są wyprodukowane przez Porshe
-//    tip: wszystkie -> ang. all, w stream() jest metoda All()

@@ -1,6 +1,4 @@
-import java.util.Comparator;
-
-public class Car_Ex2  {
+public class Car_Ex2 {
     int mode_year;
     int Cyl;
     int City_Fe;
@@ -33,5 +31,5 @@ public class Car_Ex2  {
     }
 
 
-    }
+}
 

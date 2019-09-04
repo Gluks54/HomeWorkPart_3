@@ -1,6 +1,4 @@
 public class Car_Ex1 {
-//Model Year,Division,Carline,Eng Displ,# Cyl,City FE,Hwy FE,Comb FE
-
 
     int mode_year;
     int Cyl;
